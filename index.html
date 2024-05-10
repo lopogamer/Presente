@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button id="myButton">Aperte</button>
+    <div class="carousel">
+        <div class="active" style="color: red;">Feliz Aniversário</div>
+        <div style="color: orange;">Happy Birthday</div>
+        <div style="color: yellow;">Feliz Cumpleaños</div>
+        <div style="color: green;">Joyeux Anniversaire </div>
+        <div style="color: blue;">Alles Gute zum Geburtstag </div>
+        <div style="color: indigo;">生日快乐 </div>
+        <div style="color: violet;">お誕生日おめでとうございます </div>
+    </div>
+    <script>
+        var count = 0;
+        var button = document.getElementById('myButton');
+        var carousel = document.querySelector('.carousel');
+        var slides = document.querySelectorAll('.carousel div');
+        var currentSlide = 0;
+        slides[currentSlide].classList.add('active');
+        button.addEventListener('click', function() {
+            count++;
+            this.style.fontSize = (10 + count * 25) + 'px';
+            if(count >= 5) {
+                this.style.display = 'none';
+                carousel.style.display = 'flex';
+                setInterval(function() {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide+1)%slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
+
