@@ -17,11 +17,13 @@
         <div style="color: indigo;">生日快乐 </div>
         <div style="color: violet;">お誕生日おめでとうございます </div>
     </div>
+    <audio id="myAudio" src="music.mp3" loop></audio>
     <script>
         var count = 0;
         var button = document.getElementById('myButton');
         var carousel = document.querySelector('.carousel');
         var slides = document.querySelectorAll('.carousel div');
+        var audio = document.getElementById('myAudio');
         var currentSlide = 0;
         slides[currentSlide].classList.add('active');
         button.addEventListener('click', function() {
@@ -30,6 +32,7 @@
             if(count >= 5) {
                 this.style.display = 'none';
                 carousel.style.display = 'flex';
+                audio.play(); // Começa a tocar a música
                 setInterval(function() {
                     slides[currentSlide].classList.remove('active');
                     currentSlide = (currentSlide+1)%slides.length;
@@ -40,4 +43,3 @@
     </script>
 </body>
 </html>
-
